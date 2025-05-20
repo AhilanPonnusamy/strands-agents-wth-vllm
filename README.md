@@ -7,7 +7,7 @@ export VLLM_CPU_KVCACHE_SPACE=16 # KV Cache in GBs
 export HF_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxxx  # Replace with your Hugging Face token
 
 VLLM_USE_CUDA=0 python -m vllm.entrypoints.openai.api_server \
-  --model Qwen/Qwen3-8B \          
+  --model Qwen/Qwen3-4B \
   --dtype float32 \
   --max-model-len 16384 \
   --max-num-seqs 1 \
@@ -15,8 +15,8 @@ VLLM_USE_CUDA=0 python -m vllm.entrypoints.openai.api_server \
   --disable-sliding-window \
   --enable-prefix-caching \
   --enable-auto-tool-choice \
-  --tool-call-parser hermes \
-  --hf-token $HF_TOKEN   
+  --tool-call-parser llama3_json \
+  --hf-token $HF_TOKEN 
 ```
    
 2. Download the code repository with vLLM Model Provider implementation (install git if it is not already setup, You can also downlod the zip file directly from the main page under code option as an alternate)
@@ -46,7 +46,7 @@ from strands.models.vllm import VLLMModel
 # vLLM
 vllm_model = VLLMModel(
   host="http://localhost:8000",
-  model_id="Qwen/Qwen3-8B"
+  model_id="Qwen/Qwen3-4B"
 )
 agent_vllm = Agent(model=vllm_model)
 agent_vllm("Tell me about Agentic AI")
@@ -63,7 +63,7 @@ from strands.models.vllm import VLLMModel
 from strands_tools import current_time
 
 # vLLM
-vllm_modal = VLLMModel(host="http://localhost:8000", model_id="Qwen/Qwen3-8B")
+vllm_modal = VLLMModel(host="http://localhost:8000", model_id="Qwen/Qwen3-4B")
 agent_vllm = Agent(model=vllm_modal,tools=[current_time])
 agent_vllm("What is the current time in Melbourne Australia?")
 ```
