@@ -1,4 +1,4 @@
-# Details about this POC can be found in this [blog](https://github.com/AhilanPonnusamy/strands-wth-vllm/edit/main/README.md)
+# Details about this POC can be found in this [blog](https://medium.com/@ahilanp/my-city-tour-of-aws-strands-agents-with-a-few-pleasant-surprises-along-the-way-cebf93507569)
 
 1. Setup local vLLM instance following the steps provided [here](https://github.com/AhilanPonnusamy/llm-cag-cpu). Start the vLLM instance with the required parameters and with your model of choice as shown below (adjust for GPU deployments as needed) 
 
